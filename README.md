@@ -1,6 +1,4 @@
-![image (3)](https://github.com/fly-apps/fooocus-demo/assets/3727384/4040166e-2c8b-41ab-a631-6ee0c0fe0c27)
-
-# fooocus-demo
+![image (22)](https://github.com/fly-apps/fooocus-demo/assets/3727384/5f1e3d5a-dcf1-4e6e-9b51-5c1f6aca57d4)
 
 ## Deploy
 
