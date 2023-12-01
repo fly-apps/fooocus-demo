@@ -1,15 +1,16 @@
-FROM python:3.9-slim
+FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 
-WORKDIR /app
+EXPOSE 7860
 
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip
+    apt-get install --no-install-recommends -y python3 python3-pip git libgl1 libglib2.0-0 && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip
+RUN --mount=type=cache,target=/root/.cache/pip pip3 install virtualenv
 
-COPY ./Fooocus/requirements_versions.txt /app/requirements_versions.txt
-RUN pip3 install -r requirements_versions.txt
+WORKDIR /bootstrap
 
-COPY ./Fooocus /app/
+COPY ./bootstrap.sh /bootstrap/bootstrap.sh
+RUN chmod +x "/bootstrap/bootstrap.sh"
 
-CMD [ "python3", "entry_with_update.py", "--listen" ]
+ENTRYPOINT [ "/bootstrap/bootstrap.sh", "--listen" ]

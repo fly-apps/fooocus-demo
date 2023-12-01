@@ -2,11 +2,14 @@ app = "fooocus-demo"
 primary_region = "ord"
 vm.size = "a100-40gb"
 
+[build]
+  image = "ghcr.io/fly-apps/fooocus-demo:latest"
+
 [http_service]
-  internal_port = 7860
+  internal_port = 7865
   force_https = true
 
 [mounts]
   source = "model_data"
-  destination = "/data"
+  destination = "/app/Fooocus/models"
   initial_size = "50gb"
