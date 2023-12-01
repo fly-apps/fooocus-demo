@@ -1,0 +1,12 @@
+app = "fooocus-demo"
+primary_region = "ord"
+vm.size = "a100-40gb"
+
+[http_service]
+  internal_port = 7860
+  force_https = true
+
+[mounts]
+  source = "model_data"
+  destination = "/data"
+  initial_size = "50gb"
