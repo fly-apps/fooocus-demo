@@ -1,6 +1,5 @@
 app = "fooocus-demo"
 primary_region = "ord"
-vm.size = "a100-40gb"
 
 [build]
   image = "ghcr.io/fly-apps/fooocus-demo:latest"
@@ -13,3 +12,8 @@ vm.size = "a100-40gb"
   source = "model_data"
   destination = "/app/Fooocus/models"
   initial_size = "50gb"
+
+[[vm]]
+  size = "performance-8x"
+  memory = "32gb"
+  gpu_kind = "a100-pcie-40gb"
