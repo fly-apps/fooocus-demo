@@ -9,7 +9,7 @@ primary_region = "ord"
   force_https = true
 
 [mounts]
-  source = "model_data"
+  source = "models"
   destination = "/app/Fooocus/models"
   initial_size = "50gb"
 
