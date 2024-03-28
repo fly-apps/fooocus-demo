@@ -1,26 +1,27 @@
 #!/bin/bash
 
-repo_url="https://github.com/lllyasviel/Fooocus.git"
+repo_url="https://github.com/lllyasviel/Fooocus/archive/refs/tags/"
+fooocus_version="2.3.1"
+fooocus_tar="/app/Fooocus/Fooocus-${fooocus_version}.tar.gz"
 
-if [ ! -e /app/fooocus/entry_with_update.py ]; then
-    echo "Script file does not exist. Cloning..."
-    if ! git clone "$repo_url" /app/fooocus; then
-        echo "Failed to clone repo"
-        exit 1
-    fi
+if [ ! -d "/app/Fooocus" ]; then
+    mkdir -p /app/Fooocus
 fi
 
-if [ ! -e /app/venv ]; then
-    echo "Venv does not exist. Creating..."
-    if ! virtualenv /app/venv; then
-        echo "Failed to venv"
-        exit 1
-    fi
+if ! curl -fSL "${repo_url}${fooocus_version}.tar.gz" -o "${fooocus_tar}"; then
+    echo "Failed to download Fooocus"
+    exit 1
 fi
 
-. /app/venv/bin/activate
-pip install -r /app/fooocus/requirements_versions.txt
+if ! virtualenv /app/venv; then
+    echo "Failed to create venv"
+    exit 1
+fi
 
-cd /app/fooocus
-# Execute the script with the provided arguments
+cd /app/Fooocus
+tar -xvf "${fooocus_tar}" --strip-components=1
+rm -f "${fooocus_tar}"
+
+source /app/venv/bin/activate
+pip install -r /app/Fooocus/requirements_versions.txt
 python launch.py "$@"
