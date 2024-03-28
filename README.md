@@ -3,5 +3,5 @@
 ## Deploy
 
 ```
-fly launch --image ghcr.io/fly-apps/fooocus-demo:latest --vm-gpu-kind a100-pcie-40gb --volume-initial-size 20
+fly launch --vm-gpu-kind a100-pcie-40gb --volume-initial-size 20
 ```
