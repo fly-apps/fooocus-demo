@@ -1,4 +1,4 @@
-app = "fooocus-demo"
+app = ''  # change this before deploying! unless using `flyctl launch`
 primary_region = "ord"
 
 [http_service]
