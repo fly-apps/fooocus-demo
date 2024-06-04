@@ -1,7 +1,7 @@
 #!/bin/bash
 
 repo_url="https://github.com/lllyasviel/Fooocus/archive/refs/tags/"
-fooocus_version="2.3.1"
+fooocus_version="v2.4.1"
 fooocus_tar="/app/Fooocus/Fooocus-${fooocus_version}.tar.gz"
 
 if [ ! -d "/app/Fooocus" ]; then
