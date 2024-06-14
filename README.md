@@ -16,3 +16,7 @@
 ```
 fly launch --from https://github.com/fly-apps/fooocus-demo
 ```
+
+## Having trouble?
+
+Create an issue or ask a question here: https://community.fly.io/
